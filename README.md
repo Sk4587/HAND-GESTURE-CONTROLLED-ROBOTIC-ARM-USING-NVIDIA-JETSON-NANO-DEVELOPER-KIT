@@ -16,3 +16,48 @@ operations. The model is trained using the MITI Hand dataset-II (MITI HD-II) wit
 SSD Lite MobileNet-V2 model using Raspberry Pi controller takes only 0.14s. The model is then demonstrated using highly
 accurate robotic arm Niryo one.
 
+## Objectives
+* To design and develop a real-time gesture based robotic arm control system under unconstrained environments
+* To decrease the prediction time for object detection by training and analysing in different models to make the model run efficiently on low power edge devices.
+* To integrate with IoT
+
+## Motivation
+*In teleoperation, the doctors position the surgical robots from a remote location by an efficient Human Machine Interaction system
+Gesture-based implementation is associated with a number of fields in many applications, such as Human-Machine Interaction, Virtual Reality, Robot Control, Tele-surgery systems etc
+*The gesture based control system build a richer bridge between the computers and humans. This method eliminates the keyboard and mouse inputs and to connect directly without any mechanical equipment.
+*The key motivation is to show the power of AI for day-to-day activities which makes our life convenient
+
+## Project Demo
+
+## Block Diagram
+![image](https://user-images.githubusercontent.com/46374770/195404754-0e11213b-6acb-437c-a8fc-de865d2175f8.png)
+
+## Components Description and Working
+### Niryo One 
+![image](https://user-images.githubusercontent.com/46374770/195405644-41e4c42d-b376-4a95-99c7-177abfaab5dd.png) <br>
+Niryo One is a robot arm created for robotic learning. 
+With its three Dynamixel XL servomotors, NiryoSteppers and 6 axis, it allows to reproduce all the movements required for the most advanced uses.
+There are many ways to program Niryo One (from high to low level):
+* Program the robot with the learning mode
+* Use a Xbox controller to move the robot axis directly
+* Using the Python API to give commands to the robot using an easy-to-use programming interface. There is a modbus server running on the robot.
+* Developing our own APIs to connect Niryo One to any industrial device.
+* Can be made to communicate with other devices, such as Arduino and Raspberry Pi boards.
+* Using ROS code and programming  using Python and C++. 
+
+More information on Niryo One Can be found [here](https://niryo.com/product/niryo-one/)
+
+#### Flowchart [Niryo One Learning Mode]
+To obtain co-ordinates of the arm’s position :
+![image](https://user-images.githubusercontent.com/46374770/195407027-102902e2-69e4-4e0f-8ed7-a7b06ae2adc8.png)
+
+#### Flowchart [Niryo One Working Flow]
+
+![image](https://user-images.githubusercontent.com/46374770/195407293-db4e0b59-19c2-4963-af3f-348b27e0afbc.png)
+
+
+
+ 
+
+
+
