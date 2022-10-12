@@ -55,6 +55,25 @@ To obtain co-ordinates of the arm’s position :
 
 ![image](https://user-images.githubusercontent.com/46374770/195407293-db4e0b59-19c2-4963-af3f-348b27e0afbc.png)
 
+### MQTT 
+![image](https://user-images.githubusercontent.com/46374770/195408734-ac452fde-06cc-4897-b141-18a9452df408.png)
+
+MQTT is an open source, lightweight and publish- subscribe network that transports messages between devices
+The MQTT broker is hosted on an Amazon Web Services (AWS) server <br>
+The main advantages of MQTT broker are:
+* Eliminates vulnerable and insecure client connections
+* Can easily scale from a single device to thousands
+* Manages and tracks all client connection states, including security credentials and certificates
+* Reduced network strain without compromising the security (cellular or satellite network)
+
+### Dataset (MITIHD-II)
+![image](https://user-images.githubusercontent.com/46374770/195409359-629265e5-d817-4349-b918-f61cb12fce7d.png)
+The dataset has about 10 classes and 970 samples per class.
+
+
+
+
+
 
 
  
