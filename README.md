@@ -101,21 +101,84 @@ model.  The robot is interfaced with a Raspberry Pi attached with it. The SSD mo
 gesture recognition is implemented on the Jetson Nano. A USB camera attached to the Jetson Nano is used to
 get the input data.
  
+ ![image](https://user-images.githubusercontent.com/46374770/195408734-ac452fde-06cc-4897-b141-18a9452df408.png)
+ 
 <p> Finally, to integrate with IOT, the Hand Gesture
-recognition is implemented onJetson Nano and the
+recognition is implemented on Jetson Nano and the
 corresponding signals are sent to the Raspberry Pi, which in turn
 controls the robotic arm movement. Both the Pi and Jetson Nano are
 connected to different networks. The Jetson Nano is
 remotely communicated with Raspberry Pi using Message
-Queuing Telemetry Transport (MQTT) [10] protocol as
-shown below. MQTT is an open source, lightweight and
+Queuing Telemetry Transport (MQTT) protocol as
+shown above. MQTT is an open source, lightweight and
 publish- subscribe network that transports messages between
 devices. The MQTT broker is hosted on an Amazon Web
-Services (AWS) server. Table 1 and 2 represents the algorithm
-used in Raspberry Pi-1 and Raspberry Pi-2 controllers
+Services (AWS) server.  The given tables represents the algorithm
+used in Jetson Nano and Raspberry Pi controllers
 respectively. 
+
+![image](https://user-images.githubusercontent.com/46374770/195621538-512d9249-c9fa-4aab-b78f-bf2898065fc9.png)
  
- ![image](https://user-images.githubusercontent.com/46374770/195408734-ac452fde-06cc-4897-b141-18a9452df408.png)
+The overall training objective loss function of SSD [7],
+[11] is calculated based on the weighted sum of the confidence
+loss Lcnf and the localisation loss Llcl. It is given by
+
+![image](https://user-images.githubusercontent.com/46374770/195622540-3c5c544c-a3bb-4106-8888-f5f39b599331.png)
+ 
+where ρ is the weight term and by cross‐validation it is set to
+1, K is the number of matched boxes. The loss is said to be 0
+if the number of matched boxes default to zero. The term  is
+the priors, it is 1 when it matches the ground truth box and 0
+otherwise. The term n is the number of classes, p is the
+predicted bounding box parameters and t is the ground truth
+bounding box parameter.
+ 
+## Experimental Setup
+
+### A. Training
+The SSD and SSD Lite models are trained utilizing the
+fine-tuned pretrained weights from COCO dataset. MITIHand Gesture dataset is used for training and testing process.
+The train model is optimized using the gradient decent
+optimization technique (ADAM optimization [12]). The
+models are trained for 50000 steps with batchsize-8 and
+learning rate of 0.0002. The models are trained using the
+hardware and software setup as described below. Deep
+Learning toolbox with Python libraries and TensorFlow
+framework is used. An Intel ® Core TM i7-4790 CPU @ 3.60
+GHz, 64-bit processor, 20 GB RAM, Windows 10 PRO
+operating system and GPU (NVIDIA GeForce GTX TITAN
+X (PASCAL)) is used to train the architecture. CUDA /
+CuDNN is used for providing parallel computations in a GPU.
+The python modules such as Numpy, Matplotlib, Cython,
+Pandas and Open-CV packages are used in the experimental
+analysis. 
+ 
+### B. Evaluation and Prediction
+The trained models are tested using the test samples and
+their performances are evaluated by the parameters such as
+Average Precision, Average Recall, F1 score and Prediction
+time for various intersection over union (IoU) values. IoU
+determines the accuracy of hand action detection. IoU is unity
+when the predicted bounding box exactly overlaps the ground‐
+truth bounding box. The prediction is considered to be true as
+long as the IoU is 0.5 and for the larger value of IoU's, the
+prediction is accurate. 
+ 
+### C. Implementation
+The robotic arm positioning is implemented by two
+Raspberry Pi (Model 3B) controllers (Quad Core 1.2GHz
+Broadcom BCM2837 64bit CPU, 1GB RAM and 40-pin
+extended GPIO pins) using python framework. The hand
+gesture recognition is implemented on Raspberry Pi-1 with
+USB camera. The Raspberry Pi-2 is used to control the robotic
+arm in remote location. The servo motors of the Robotic arm
+are controlled by the PWM signals from PCA9685. The
+Python library adafruit-circuit python-servokit is used to
+interface Raspberry Pi with PCA 9685. The MQTT broker is
+hosted on the IOT server of Amazon Web Services (AWS).
+The Python SDK AWS IoT Python SDK is used to access the
+AWS server in end devices. 
+
 
 
 ## Motivation
