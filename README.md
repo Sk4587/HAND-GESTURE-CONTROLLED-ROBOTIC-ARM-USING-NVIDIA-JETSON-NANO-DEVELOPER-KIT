@@ -1,25 +1,73 @@
 # HAND-GESTURE-CONTROLLED-ROBOTIC-ARM-USING-NVIDIA-JETSON-NANO-DEVELOPER-KIT
-In tele operation mechanism, the surgical robots are controlled using hand gestures
-from remote location. The remote location robotic arm control using hand gesture
-recognition is a challenging computer vision problem. The hand action recognition
-under complex environment (cluttered background, lighting variation, scale variation
-etc.) is a difficult and time consuming process. In this project, a light weight
-Convolutional Neural Network (CNN) model Single Shot Detector (SSD) Lite
-MobileNet-V2 is used for real-time hand gesture recognition. SSD Lite versions
-tend to run hand gesture recognition applications on low-power computing devices
-like Jetson Nano due to its light weight and timely recognition. The model is deployed
-using a Camera, Jetson Nano and a Raspberry Pi Controller. For the hand gesture
-recognition and data transfer to the cloud server, the Jetson Nano is used. An MQTT broker is hosted on AWS server that enables remote communication between the robot and Jetson Nano using publisher-subscriber model. The
-Raspberry Pi Controller receives the cloud information and controls the Robotic arm
-operations. The model is trained using the MITI Hand dataset-II (MITI HD-II) with the learning rate of
-0.0002 using Adam optimizer and has obtained an Average precision of 98.74%. The prediction time for
-SSD Lite MobileNet-V2 model using Raspberry Pi controller takes only 0.14s. The model is then demonstrated using highly
-accurate robotic arm Niryo one.
+<p>In teleoperation, the doctors position the surgical robots
+from a remote location by an efficient Human Machine
+Interaction system. The interaction between the human beings
+and machines are carried out in more natural forms with the
+development in the field of Artificial Intelligence. Hand
+gestures are used to convey a non-verbal type of
+information’s. Gesture-based implementation is associated
+with a number of fields in many applications, such as HumanMachine Interaction, Virtual Reality, Robot Control, Telesurgery systems etc. The gesture based control system build a
+richer bridge between the computers and humans. This
+method eliminates the keyboard and mouse inputs and to
+connect directly without any mechanical equipment. 
+ 
+<p>In this project, a hand gesture recognition system using a
+single stage deep convolutional neural network (CNN) to
+control Niryo One, a robotic arm with 6 degrees of freedom (DOF) in a
+remote location is proposed. The hand gestures are recognized
+using a Single Shot Detector (SSD) Lite MobileNet-V2 based
+CNN model. The MobileNet-V2 CNN model is used as a
+feature extractor. The information of the recognized gesture is
+transmitted using a Wi-Fi module and then to the 6 DOF
+Robotic arm in the remote location. An MQTT broker hosted on AWS acts as a message queuing service.  The SSD Lite MobileNetV2 model predicts the input gestures at a faster rate when
+compared with the SSD Inception-V2 model. 
 
-## Objectives
-* To design and develop a real-time gesture based robotic arm control system under unconstrained environments
-* To decrease the prediction time for object detection by training and analysing in different models to make the model run efficiently on low power edge devices.
-* To integrate with IoT
+## Methodology
+<p> An overview of vision based robotic arm control using
+hand gestures recognition is shown in fig.1. The hand gesture
+recognition is performed using the single stage deep CNN.
+SSD Lite MobileNet-V2 model and SSD Inception-V2
+model are used in this framework for gesture recognition.
+MobileNet-V2 and Inception-V2 CNN models are used as
+feature extractor.
+<p> These CNN models are trained and tested using a MITI
+Hand Dataset–II (MITI HD-II). MITI HD-II is an improved
+version of MITI HD dataset. It is a custom-created
+dataset of hand posture obtained from different individuals
+with differing skin tones, complex profiles, different hand
+size, conditions of lighting, geometry, fast movements, and
+different age classes. The dataset has about 10 classes and 970
+samples per class. The sample frames of each class from MITI
+HD-II are shown.<br>
+![image](https://user-images.githubusercontent.com/46374770/195409359-629265e5-d817-4349-b918-f61cb12fce7d.png)
+
+<p> The SSD is a CNN based object detector. It uses a single
+forward pass network and a bounding box regression
+technique to classify and localize the object. Over Faster RCNN, SSD offers significant speed gains. SSD is also used in
+real-time for action recognition. SSD completes the process of
+region proposal and classification in a single shot process.
+SSD Lite  model is the lighter version of the conventional
+SSD model. SSD Lite MobileNet-V2 is 20 times more
+effective and 10 times lighter than YOLO-V2. It outperforms
+YOLO-V2 architecture.
+<p> MobileNet is a compact architecture that constructs a
+lightweight deep convolutional neural network using deeply
+separable convolutions. Depth-separable convolution filters
+consist of filters for deep convolution and filters for point
+convolution. On each input channel, the depthwise
+convolution filter performs a single convolution, and the point
+convolution filter combines linearly, the 1 to 1 convolutions
+and the output of depthwise convolution. MobileNets
+concentrate on latency optimization, but also generate small
+networks. The depth-wise seperable convolution has separate
+layers for filtering and combining which drastically
+contributes in reducing the computation time and model size
+compared to a standard convolution process. It offers a
+computation reduction by a factor of 1/N + 1/Dk
+2
+, where N is
+the number of output channels and Dk is kernel size. This is 8
+to 9 times lesser compared to a standard convolution.
 
 ## Motivation
 *In teleoperation, the doctors position the surgical robots from a remote location by an efficient Human Machine Interaction system
