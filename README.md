@@ -246,6 +246,9 @@ communication between human and robot.
  
  ## Conclusion
 <p> The remote location robotic arm control is performed using the single stage deep CNN hand gesture recognition model. The SSD lite MobileNet-V2 and SSD Inception V2 models are trained and tested using MITI HD-II dataset. SSD Lite model is preferred to run the hand gesture recognition applications on low power devices such as a Jetson Nano due to its light weight and speedy recognition. Jetson Nano is used for hand gesture recognition and to transmit the information to cloud.  Raspberry Pi controller receives the information from the cloud and control the operations of Robotic arm.  Both the Raspberry Pi’s are remotely communicated using MQTT Protocol and the MQTT broker is hosted on an AWS server.  For IoU threshold of 0.5, the Average precision, Average recall and F1 score of SSD Inception-V2 model is calculated as 99.27%, 95.58%, and 97.39% and the corresponding values for SSD MobileNet-V2 model is 98.74%, 94.11% and 96.37% respectively. The prediction time for SSD Inception-V2 Model using Jetson Nano controller is 0.21s whereas SSD Lite MobileNet-V2 model consumes 0.14s.  The MobileNet model runs faster at the cost of lower precision. Hence to run on low power edge devices, the SSD Lite Mobilenet-V2 model is preferred. Further reduction in prediction time will improve the speed of communication between humans and robots. This prototype can be extended into a Tele-surgery system which is considered as our future work.
+ 
+## Acknowledgement
+The authors wish to thank NVIDIA for supplying the GPU under University Research Grant Initiative (Model No: NVIDIA TitanX).
 
 
 
