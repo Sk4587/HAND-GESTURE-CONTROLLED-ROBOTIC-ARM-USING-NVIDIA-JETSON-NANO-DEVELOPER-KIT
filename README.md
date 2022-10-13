@@ -166,71 +166,86 @@ long as the IoU is 0.5 and for the larger value of IoU's, the
 prediction is accurate. 
  
 ### C. Implementation
-The robotic arm positioning is implemented by two
-Raspberry Pi (Model 3B) controllers (Quad Core 1.2GHz
+The robotic arm positioning is implemented by a 
+Raspberry Pi (Model 3B) controller (Quad Core 1.2GHz
 Broadcom BCM2837 64bit CPU, 1GB RAM and 40-pin
-extended GPIO pins) using python framework. The hand
-gesture recognition is implemented on Raspberry Pi-1 with
-USB camera. The Raspberry Pi-2 is used to control the robotic
-arm in remote location. The servo motors of the Robotic arm
-are controlled by the PWM signals from PCA9685. The
-Python library adafruit-circuit python-servokit is used to
-interface Raspberry Pi with PCA 9685. The MQTT broker is
+extended GPIO pins) and a Jetson Nano controller(NVIDIA Maxwell architecture with 128 NVIDIA CUDA® cores,4 GB 64-bit LPDDR4 Memory,Quad-core ARM Cortex-A57 MPCore processor) using python framework. The hand
+gesture recognition is implemented on Jetson Nano with
+USB camera. The Raspberry Pi is used to control the robotic
+arm in remote location. The MQTT broker is
 hosted on the IOT server of Amazon Web Services (AWS).
 The Python SDK AWS IoT Python SDK is used to access the
 AWS server in end devices. 
 
+### D. Niryo One
+The flowchart to on how to get the robotic arm positions and the work flow of the Niryo One operation is as shown below
+![image](https://user-images.githubusercontent.com/46374770/195628619-88d0e409-38d8-43f0-9dbd-f60fb3198375.png)
+![image](https://user-images.githubusercontent.com/46374770/195628893-737464a2-1f2e-4506-a146-f852b3595c3e.png)
 
+## Results and Discussion
 
-## Motivation
-*In teleoperation, the doctors position the surgical robots from a remote location by an efficient Human Machine Interaction system
-Gesture-based implementation is associated with a number of fields in many applications, such as Human-Machine Interaction, Virtual Reality, Robot Control, Tele-surgery systems etc
-*The gesture based control system build a richer bridge between the computers and humans. This method eliminates the keyboard and mouse inputs and to connect directly without any mechanical equipment.
-*The key motivation is to show the power of AI for day-to-day activities which makes our life convenient
+<p>The SSD Lite Mobilenet-V2 and SSD Inception-V2 based
+hand gesture recognition models are evaluated. The
+performance of the models are assessed by Average Precision
+(AP), Average Recall (AR) and F1-Score. The prediction time
+of the model is calculated during the detection process on a
+Raspberry Pi processor. Average Precision of different models
+is calculated for various values of IoU threshold.
+The term APall is the overall average precision, APsmall is
+the average precision for the size of the object in an image
+lesser than 32 × 32 pixels, APmedium is the average precision for
+the object size lesser than 96 × 96 pixels and greater than
+32 × 32 pixels and APlarge is for the object size greater than
+96 × 96 pixels.
+ 
+<p>Similarly, ARsmall average recall for the object is lesser
+than 32 × 32 pixels, ARmedium and ARlarge are the average recall
+for the object size smaller than 96 × 96 pixels and greater than
+32 × 32 pixels, greater than 96 × 96 pixels, respectively. AR1,
+AR10 and AR100 are the average recall values determined for
+various number of detections such as 1, 10 and 100.
+Both the models are trained for 50,000 epochs with batch
+size as 8. SSD Lite Mobilenet-V2 and SSD Inception-V2
+models are trained with a learning rate of 0.0002. The models
+are compared on the basis of Average Precision, Average
+Recall and F1 Score. It may be noted that SSD Inception-V2
+performs better on terms of accuracy while SSD Lite
+MobileNet-V2 has lower prediction time.
+ 
+<p>Table 3 shows the Average Precision of Single Stage
+Deep CNN models using MITIHD-II datasets for the various
+IoU ranges of 0.5, 0.75 and 0.5:0.95. The performance metrics
+obtained for SSD Inception-V2 is described as AP0.50 is 0.993,
+AP0.75 is 0.991 and AP0.5:0.95 is 0.884. The metrics of SSD Lite
+MobileNet-V2 is given as AP0.50 is 0.987, AP0.75 is 0.968 and
+AP0.5:0.95 is 0.804 respectively. The comparison of these two
+models shows that the SSD Inception-V2 has higher Average
+precision values when compared to the SSD Lite MobileNetV2 model.
+The Average Recall of Single Stage Deep CNN models
+using MITIHD-II datasets for the IoU range of 0.5:0.95 is
+illustrated in table 4. The Average Recall of SSD InceptionV2 model is 0.911 for AR1 and 0.914 for both AR10 and AR100.
+For SSD Lite MobileNet-V2 model AR1 is 0.839 and 0.842
+for both AR10 and AR100.
+ 
+<p>Table 5 demonstrates the comparison of the Performance
+metrics of Single Stage Deep CNN models using MITIHD-II
+dataset for the IoU range of 0.5. The AP0.5, AR0.5, and F1-
+Score0.5 are calculated as 99.27%, 95.58% and 97.39% for
+SSD Inception-V2 Model and 98.74%, 94.11% and 96.37%
+for SSD Lite MobileNet-V2 Model. Though the Precision,
+Recall and F1-score are higher for SSD Inception-V2 model,
+the prediction time of SSD Lite MobileNet-V2 Model is low
+(0.67s). This makes a significant contribution in the speed of
+communication between human and robot.
+ 
+![image](https://user-images.githubusercontent.com/46374770/195639353-547c27e8-c2d9-4795-b29d-1f883651df5a.png)
+ 
+<p>The overall loss curve is plotted with number of training steps in x axis and loss in y axis. The graph is shown in fig.4.  The loss is higher at the start and slowly decreases towards the end. It may be noted from the graph that after 50,000 steps SSD Lite MobileNet-V2 has higher loss than SSD Inception-V2 CNN model. 
 
-## Project Demo
-
-## Block Diagram
-![image](https://user-images.githubusercontent.com/46374770/195404754-0e11213b-6acb-437c-a8fc-de865d2175f8.png)
-
-## Components Description and Working
-### Niryo One 
-![image](https://user-images.githubusercontent.com/46374770/195405644-41e4c42d-b376-4a95-99c7-177abfaab5dd.png) <br>
-Niryo One is a robot arm created for robotic learning. 
-With its three Dynamixel XL servomotors, NiryoSteppers and 6 axis, it allows to reproduce all the movements required for the most advanced uses.
-There are many ways to program Niryo One (from high to low level):
-* Program the robot with the learning mode
-* Use a Xbox controller to move the robot axis directly
-* Using the Python API to give commands to the robot using an easy-to-use programming interface. There is a modbus server running on the robot.
-* Developing our own APIs to connect Niryo One to any industrial device.
-* Can be made to communicate with other devices, such as Arduino and Raspberry Pi boards.
-* Using ROS code and programming  using Python and C++. 
-
-More information on Niryo One Can be found [here](https://niryo.com/product/niryo-one/)
-
-#### Flowchart [Niryo One Learning Mode]
-To obtain co-ordinates of the arm’s position :
-![image](https://user-images.githubusercontent.com/46374770/195407027-102902e2-69e4-4e0f-8ed7-a7b06ae2adc8.png)
-
-#### Flowchart [Niryo One Working Flow]
-
-![image](https://user-images.githubusercontent.com/46374770/195407293-db4e0b59-19c2-4963-af3f-348b27e0afbc.png)
-
-### MQTT 
-![image](https://user-images.githubusercontent.com/46374770/195408734-ac452fde-06cc-4897-b141-18a9452df408.png)
-
-MQTT is an open source, lightweight and publish- subscribe network that transports messages between devices
-The MQTT broker is hosted on an Amazon Web Services (AWS) server <br>
-The main advantages of MQTT broker are:
-* Eliminates vulnerable and insecure client connections
-* Can easily scale from a single device to thousands
-* Manages and tracks all client connection states, including security credentials and certificates
-* Reduced network strain without compromising the security (cellular or satellite network)
-
-### Dataset (MITIHD-II)
-![image](https://user-images.githubusercontent.com/46374770/195409359-629265e5-d817-4349-b918-f61cb12fce7d.png)
-The dataset has about 10 classes and 970 samples per class.
-
+ ![image](https://user-images.githubusercontent.com/46374770/195639562-a57d7887-e095-49fc-b89e-0832f1986bb1.png)
+ 
+ ## Conclusion
+<p> The remote location robotic arm control is performed using the single stage deep CNN hand gesture recognition model. The SSD lite MobileNet-V2 and SSD Inception V2 models are trained and tested using MITI HD-II dataset. SSD Lite model is preferred to run the hand gesture recognition applications on low power devices such as a Jetson Nano due to its light weight and speedy recognition. Jetson Nano is used for hand gesture recognition and to transmit the information to cloud.  Raspberry Pi controller receives the information from the cloud and control the operations of Robotic arm.  Both the Raspberry Pi’s are remotely communicated using MQTT Protocol and the MQTT broker is hosted on an AWS server.  For IoU threshold of 0.5, the Average precision, Average recall and F1 score of SSD Inception-V2 model is calculated as 99.27%, 95.58%, and 97.39% and the corresponding values for SSD MobileNet-V2 model is 98.74%, 94.11% and 96.37% respectively. The prediction time for SSD Inception-V2 Model using Jetson Nano controller is 0.21s whereas SSD Lite MobileNet-V2 model consumes 0.14s.  The MobileNet model runs faster at the cost of lower precision. Hence to run on low power edge devices, the SSD Lite Mobilenet-V2 model is preferred. Further reduction in prediction time will improve the speed of communication between humans and robots. This prototype can be extended into a Tele-surgery system which is considered as our future work.
 
 
 
