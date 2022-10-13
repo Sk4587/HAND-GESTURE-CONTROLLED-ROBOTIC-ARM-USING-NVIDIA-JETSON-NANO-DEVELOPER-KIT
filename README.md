@@ -72,6 +72,51 @@ computation reduction by a factor of 1/N + 1/Dk
 , where N is
 the number of output channels and Dk is kernel size. This is 8
 to 9 times lesser compared to a standard convolution.
+ 
+<p>Numerous CNN models are tested in object detection
+problems. Some of them are Region-based convolutional
+neural network (R-CNN), You Only Look Once (YOLO), and
+Single Shot Detector (SSD). In this project SSD Lite
+MobileNet-V2 model and SSD Inception-V2 model are used
+for Hand Gesture Recognition. The performances of the above
+specified models are evaluated and compared with each other.
+ 
+<p> Inception-V2 is faster and computationally efficient than
+other similar architectures like VGG Net and Alex Net. The
+reduction of dimensionality is carried out effectively in the
+convolutions of the Inception-V2 model by integrating a smart
+factorization process. Inception-V2 consists of three layers.
+The first layer consists of three convolutional layers
+with dimensionality reduction filter bank. The second layer
+consists of five layers with deeper filter banks and last layer
+consists of two wider filter banks. It is then connected to fully
+connected layers. Out of these two CNN models, SSD Lite
+MobileNet-V2 model is highly preferred for remotely
+operated robots because of its light weight. This improves the
+speed of Hand Gesture Recognition.
+ 
+<p> The robotic arm has six degrees of freedom with a gripper. The robotic arm moves
+to fixed positions based on the gestures recognized by the SSD
+model.  The robot is interfaced with a Raspberry Pi attached with it. The SSD model for Hand
+gesture recognition is implemented on the Jetson Nano. A USB camera attached to the Jetson Nano is used to
+get the input data.
+ 
+<p> Finally, to integrate with IOT, the Hand Gesture
+recognition is implemented onJetson Nano and the
+corresponding signals are sent to the Raspberry Pi, which in turn
+controls the robotic arm movement. Both the Pi and Jetson Nano are
+connected to different networks. The Jetson Nano is
+remotely communicated with Raspberry Pi using Message
+Queuing Telemetry Transport (MQTT) [10] protocol as
+shown below. MQTT is an open source, lightweight and
+publish- subscribe network that transports messages between
+devices. The MQTT broker is hosted on an Amazon Web
+Services (AWS) server. Table 1 and 2 represents the algorithm
+used in Raspberry Pi-1 and Raspberry Pi-2 controllers
+respectively. 
+ 
+ ![image](https://user-images.githubusercontent.com/46374770/195408734-ac452fde-06cc-4897-b141-18a9452df408.png)
+
 
 ## Motivation
 *In teleoperation, the doctors position the surgical robots from a remote location by an efficient Human Machine Interaction system
