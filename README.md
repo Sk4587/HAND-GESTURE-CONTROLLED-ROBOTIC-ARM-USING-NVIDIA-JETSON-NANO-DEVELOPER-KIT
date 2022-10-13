@@ -24,12 +24,15 @@ compared with the SSD Inception-V2 model.
 
 ## Methodology
 <p> An overview of vision based robotic arm control using
-hand gestures recognition is shown in fig.1. The hand gesture
+hand gestures recognition is shown below. The hand gesture
 recognition is performed using the single stage deep CNN.
 SSD Lite MobileNet-V2 model and SSD Inception-V2
 model are used in this framework for gesture recognition.
 MobileNet-V2 and Inception-V2 CNN models are used as
 feature extractor.
+ 
+ ![image](https://user-images.githubusercontent.com/46374770/195404754-0e11213b-6acb-437c-a8fc-de865d2175f8.png)
+ 
 <p> These CNN models are trained and tested using a MITI
 Hand Dataset–II (MITI HD-II). MITI HD-II is an improved
 version of MITI HD dataset. It is a custom-created
@@ -39,6 +42,7 @@ size, conditions of lighting, geometry, fast movements, and
 different age classes. The dataset has about 10 classes and 970
 samples per class. The sample frames of each class from MITI
 HD-II are shown.<br>
+
 ![image](https://user-images.githubusercontent.com/46374770/195409359-629265e5-d817-4349-b918-f61cb12fce7d.png)
 
 <p> The SSD is a CNN based object detector. It uses a single
