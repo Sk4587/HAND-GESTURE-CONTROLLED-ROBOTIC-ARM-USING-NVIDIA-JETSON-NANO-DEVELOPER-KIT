@@ -117,7 +117,8 @@ Services (AWS) server.  The given tables represents the algorithm
 used in Jetson Nano and Raspberry Pi controllers
 respectively. 
 
-![image](https://user-images.githubusercontent.com/46374770/195621538-512d9249-c9fa-4aab-b78f-bf2898065fc9.png)
+![image](https://user-images.githubusercontent.com/46374770/195624747-a33992e3-d26f-4c87-bf10-c3ecc4300f3e.png)
+
  
 The overall training objective loss function of SSD [7],
 [11] is calculated based on the weighted sum of the confidence
