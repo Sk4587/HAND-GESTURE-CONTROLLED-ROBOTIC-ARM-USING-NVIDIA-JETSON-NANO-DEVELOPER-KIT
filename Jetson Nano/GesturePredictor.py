@@ -23,10 +23,10 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import json
 
 
-host = 'a16a4amayvp2vf-ats.iot.us-west-2.amazonaws.com'
-rootCAPath = 'IOT/root-CA.crt'
-certificatePath = 'IOT/Sk.cert.pem'
-privateKeyPath = 'IOT/Sk.private.key'
+host = '<AWS IOT server url>'
+rootCAPath = '<Path to rootCA>'
+certificatePath = '<Path to certificate>'
+privateKeyPath = '<Path to private key>'
 port = 8883
 clientId = 'publish'
 topic = 'gesture'
@@ -122,9 +122,7 @@ if use_TPU:
 CWD_PATH = os.getcwd()
 
 # Path to .tflite file, which contains the model that is used for object detection
-#PATH_TO_CKPT = os.path.join(CWD_PATH,MODEL_NAME,GRAPH_NAME)
-PATH_TO_CKPT = 'SSD_IV2/model_lite1.tflite'
-#PATH_TO_CKPT = 'SSD_IV2/model3.tflite'
+PATH_TO_CKPT = '<Path to tflite model>'
 
 # Path to label map file
 #PATH_TO_LABELS = os.path.join(CWD_PATH,MODEL_NAME,LABELMAP_NAME)
