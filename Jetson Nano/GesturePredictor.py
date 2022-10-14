@@ -1,6 +1,7 @@
 ######## Webcam Object Detection Using Tensorflow-trained Classifier and MQTT Publisher #########
 #
 # Author: Sreekar C 
+# Mail: sreekar.cango@gmail.com
 # Description: 
 # This program uses a TensorFlow Lite model to perform object detection on a live webcam
 # feed. It draws boxes and scores around the objects of interest in each frame from the
