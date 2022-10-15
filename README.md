@@ -26,7 +26,27 @@ compared with the SSD Inception-V2 model.
 
 [![image](https://user-images.githubusercontent.com/46374770/196001259-ef8898b2-70a6-4a02-b13a-c0ae9e3f1ed2.png)](https://www.youtube.com/watch?v=NbdrbcuBhn8)
 
+## Use Code
+ 
+* Create datasets and train the model to get a infrence graph. Detailed steps can be found [here](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
+* Convert the inference graph to tf lite model.
+ ```python
+ import tensorflow as tf
 
+# Convert the model
+converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir) # path to the SavedModel directory
+tflite_model = converter.convert()
+
+# Save the model.
+with open('model.tflite', 'wb') as f:
+  f.write(tflite_model)
+ ```
+ Reference taken from [here](https://www.tensorflow.org/lite/models/convert/convert_models)
+ 
+ Note: In case you want to use my pre-trained weights, the link can be found in the Readme of Jetson Nano folder
+
+* For furthur steps, go through the Readme of Jetson Nano  and Niryo One folders
+ 
 ## Methodology
 <p> An overview of vision based robotic arm control using
 hand gestures recognition is shown below. The hand gesture
