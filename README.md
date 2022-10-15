@@ -22,6 +22,11 @@ transmitted using a Wi-Fi module and then to the 6 DOF
 Robotic arm in the remote location. An MQTT broker hosted on AWS acts as a message queuing service.  The SSD Lite MobileNetV2 model predicts the input gestures at a faster rate when
 compared with the SSD Inception-V2 model. 
 
+## Project Demo
+
+[![image](https://user-images.githubusercontent.com/46374770/196001259-ef8898b2-70a6-4a02-b13a-c0ae9e3f1ed2.png)](https://www.youtube.com/watch?v=NbdrbcuBhn8)
+
+
 ## Methodology
 <p> An overview of vision based robotic arm control using
 hand gestures recognition is shown below. The hand gesture
