@@ -25,7 +25,7 @@ sudo apt-get install python3-opencv
 * Copy the path location of the trained model and replace it in GesturePredictor.py
 
 ## 6. Run the python Script
-* Make sure that the raspberry-pi controller is connected to the internet.
+* Make sure that the jetson nano controller is connected to the internet.
 * Run the python script using
 ```sh
 python GesturePredictor.py
