@@ -23,7 +23,9 @@ Robotic arm in the remote location. An MQTT broker hosted on AWS acts as a messa
 compared with the SSD Inception-V2 model. 
 
 ## Project Demo
-
+### Experimental Setup
+![image](https://user-images.githubusercontent.com/46374770/203733286-76828d33-452e-4765-a19a-690fb8b849cc.png)
+### Demo in Action
 [![image](https://user-images.githubusercontent.com/46374770/196001259-ef8898b2-70a6-4a02-b13a-c0ae9e3f1ed2.png)](https://www.youtube.com/watch?v=NbdrbcuBhn8)
 
 ## Use Code
