@@ -28,6 +28,8 @@ compared with the SSD Inception-V2 model.
 ### Demo in Action
 [![image](https://user-images.githubusercontent.com/46374770/196001259-ef8898b2-70a6-4a02-b13a-c0ae9e3f1ed2.png)](https://www.youtube.com/watch?v=NbdrbcuBhn8)
 
+
+
 ## Use Code
  
 * Create datasets and train the model to get a infrence graph. Detailed steps can be found [here](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10)
