@@ -49,7 +49,7 @@ with open('model.tflite', 'wb') as f:
  
  Note: In case you want to use my pre-trained weights, the link can be found in the Readme of Jetson Nano folder
 
-* For furthur steps, go through the Readme of Jetson Nano  and Niryo One folders
+* For furthur steps, go through the Readme of [Jetson Nano](https://github.com/Sk4587/HAND-GESTURE-CONTROLLED-ROBOTIC-ARM-USING-NVIDIA-JETSON-NANO-DEVELOPER-KIT/tree/main/Jetson%20Nano)  and [Niryo One](https://github.com/Sk4587/HAND-GESTURE-CONTROLLED-ROBOTIC-ARM-USING-NVIDIA-JETSON-NANO-DEVELOPER-KIT/tree/main/Niryo%20One) folders
  
 ## Methodology
 <p> An overview of vision based robotic arm control using
